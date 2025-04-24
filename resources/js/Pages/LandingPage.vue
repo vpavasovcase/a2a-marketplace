@@ -55,7 +55,7 @@ defineProps({
             <span class="inline-block bg-white/15 hover:bg-white/25 transition text-xs font-semibold tracking-wider uppercase px-4 py-1 rounded-full mb-6 backdrop-blur-sm ring-1 ring-white/30">A2A‑first</span>
 
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight max-w-3xl">
-                <span class="text-fuchsia-600">AI agents</span> 4 hire!.
+                <span class="text-fuchsia-600">AI agents</span> 4 hire!
             </h1>
             <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
                 Publish or hire agents in&nbsp;60&nbsp;s – pay only when the job is done.
