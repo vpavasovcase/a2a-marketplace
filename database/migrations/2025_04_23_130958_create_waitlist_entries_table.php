@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('waitlist_entries', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('company')->nullable();
+            $table->string('user_type');
+            $table->text('comments')->nullable();
+            $table->boolean('is_developer')->default(false);
             $table->timestamps();
         });
     }

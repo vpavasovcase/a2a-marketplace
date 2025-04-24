@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PackSuggestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -21,11 +22,11 @@ class PackSuggestionController extends Controller
             'additional_details' => 'nullable|string',
         ]);
 
-        // For now, just log the suggestion
+        // Log the suggestion
         Log::info('New pack suggestion', $validated);
 
-        // In a real application, you would save this to the database
-        // PackSuggestion::create($validated);
+        // Save to the database
+        PackSuggestion::create($validated);
 
         return redirect()->back()->with('success', 'Thank you for your suggestion!');
     }

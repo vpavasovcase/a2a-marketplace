@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WaitlistEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -21,11 +22,11 @@ class WaitlistController extends Controller
             'is_developer' => 'boolean',
         ]);
 
-        // For now, just log the entry
+        // Log the entry
         Log::info('New waitlist entry', $validated);
 
-        // In a real application, you would save this to the database
-        // WaitlistEntry::create($validated);
+        // Save to the database
+        WaitlistEntry::create($validated);
 
         return redirect()->back()->with('success', 'Thank you for joining our waitlist!');
     }

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('pack_suggestions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('pack_name');
+            $table->text('problem_it_solves');
+            $table->text('use_case');
+            $table->text('additional_details')->nullable();
             $table->timestamps();
         });
     }
