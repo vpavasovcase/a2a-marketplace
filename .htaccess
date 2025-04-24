@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Deny access to sensitive files
+<FilesMatch "^\.env|composer\.json|composer\.lock|package\.json|package-lock\.json|phpunit\.xml|README\.md|webpack\.mix\.js|yarn\.lock|server\.php|artisan$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to sensitive directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/(.*)$ - [R=404,L]
+</IfModule>
+
+# PHP settings
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>

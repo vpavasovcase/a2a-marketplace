@@ -1,0 +1,6 @@
+# SSH configuration for Namecheap hosting
+Host namecheap
+    HostName 66.29.146.222
+    User giewjrvx
+    Port 21098
+    IdentityFile ~/.ssh/id_ed25519
