@@ -19,31 +19,6 @@ REPO_URL="https://github.com/vpavasovcase/a2a-marketplace.git"
 APP_DIR="$HOME/public_html"
 BRANCH="main"
 
-# Database configuration - load from environment or .env file
-# IMPORTANT: Never hardcode credentials in scripts that are committed to repositories
-DB_NAME="${DB_NAME:-}"
-DB_USER="${DB_USER:-}"
-DB_PASSWORD="${DB_PASSWORD:-}"
-
-echo -e "${YELLOW}Starting deployment of A2A Marketplace...${NC}"
-
-# Check if database credentials are provided
-if [ -z "$DB_NAME" ] || [ -z "$DB_USER" ] || [ -z "$DB_PASSWORD" ]; then
-    echo -e "${RED}Error: Database credentials are not set.${NC}"
-    echo -e "${YELLOW}Please provide DB_NAME, DB_USER, and DB_PASSWORD environment variables.${NC}"
-    echo -e "${YELLOW}Example: DB_NAME=mydb DB_USER=myuser DB_PASSWORD=mypass bash server-deploy.sh${NC}"
-    exit 1
-fi
-
-# Create backup directory if it doesn't exist
-mkdir -p "$HOME/backups"
-
-# Backup the current .env file if it exists
-if [ -f "$APP_DIR/.env" ]; then
-    echo -e "${YELLOW}Backing up .env file...${NC}"
-    cp "$APP_DIR/.env" "$HOME/backups/.env.backup-$(date +%Y%m%d%H%M%S)"
-fi
-
 # Check if the repository already exists
 if [ -d "$APP_DIR/.git" ]; then
     echo -e "${YELLOW}Repository already exists. Pulling latest changes...${NC}"
@@ -67,14 +42,6 @@ fi
 
 # Navigate to the application directory
 cd "$APP_DIR"
-
-# Create or update .env file
-echo -e "${YELLOW}Setting up .env file...${NC}"
-cp .env.namecheap .env
-sed -i "s/DB_DATABASE=.*/DB_DATABASE=$DB_NAME/g" .env
-sed -i "s/DB_USERNAME=.*/DB_USERNAME=$DB_USER/g" .env
-sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/g" .env
-sed -i "s#APP_URL=.*#APP_URL=https://a2a-marketplace.com#g" .env
 
 # Install Composer dependencies
 echo -e "${YELLOW}Installing Composer dependencies...${NC}"
