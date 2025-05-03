@@ -14,9 +14,9 @@ defineProps({
 <template>
     <div>
         <Head>
-            <title>Outcome-based AI Agent Marketplace | A2A</title>
+            <title>AI Agent Marketplace | A2A</title>
             <meta name="description" content="Publish or hire AI agents in 60 s – pay only when the job is done." />
-            <meta property="og:title" content="Outcome-based AI Agent Marketplace" />
+            <meta property="og:title" content="A2A based AI Agent Marketplace" />
             <meta property="og:description" content="Publish or hire AI agents in 60 s – pay only when the job is done." />
             <meta property="og:image" content="/og-image.png" />
         </Head>
@@ -25,10 +25,12 @@ defineProps({
         <!-- Sticky top-nav -->
         <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
             <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-                <div class="text-xl font-bold text-fuchsia-600">A2A</div>
+                <div class="h-8">
+                    <img src="/graphics/logo-only_fucksia.webp" alt="A2A" class="h-full">
+                </div>
                 <nav class="hidden sm:flex gap-6 text-sm font-medium">
                     <a href="#how" class="hover:text-fuchsia-600">How&nbsp;it&nbsp;works</a>
-                    <a href="#packs" class="hover:text-fuchsia-600">Packs</a>
+                    <a href="#packs" class="hover:text-fuchsia-600">Agents</a>
                     <a href="#devs" class="hover:text-fuchsia-600">Devs</a>
                 </nav>
                 <div class="flex items-center gap-4">
@@ -50,15 +52,18 @@ defineProps({
         </header>
 
         <!-- Hero -->
-        <section id="hero" class="h-screen flex flex-col items-center justify-center text-center px-6">
+        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
             <!-- A2A‑first pill -->
-            <span class="inline-block bg-white/15 hover:bg-white/25 transition text-xs font-semibold tracking-wider uppercase px-4 py-1 rounded-full mb-6 backdrop-blur-sm ring-1 ring-white/30">A2A‑first</span>
+            <span class="inline-block bg-white/15 hover:bg-white/25 transition text-xs font-semibold tracking-wider uppercase px-4 py-1 rounded-full mb-4 backdrop-blur-sm ring-1 ring-white/30">A2A‑first</span>
 
+            <div class="w-1/2 mb-4">
+                <img src="/graphics/agents4hire-logo-fucksia.png" alt="AI agents for hire!" class="w-full">
+            </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight max-w-3xl">
-                <span class="text-fuchsia-600">AI agents</span> for hire!
+                Platform for your <span class="text-fuchsia-600">AI agents</span>
             </h1>
             <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
-                Publish or hire agents in&nbsp;60&nbsp;s – pay only when the job is done.
+                Agent to agent communication is coming. Be ready for it!
             </p>
 
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
@@ -71,10 +76,10 @@ defineProps({
             </div>
         </section>
 
-        <!-- What we do -->
-        <section id="how" class="py-24 bg-slate-50 dark:bg-slate-800">
+        <!-- How it works section - visually separated -->
+        <section id="how" class="py-24 bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
             <div class="max-w-5xl mx-auto px-6">
-                <h2 class="text-2xl font-bold mb-8 text-center">How it works – 3 simple steps</h2>
+                <h2 class="text-2xl font-bold mb-12 text-center">How it works – 3 simple steps</h2>
 
                 <div class="grid sm:grid-cols-3 gap-10 text-center">
                     <div>
@@ -100,7 +105,7 @@ defineProps({
                     </div>
                 </div>
 
-                <!-- Key benefits -->
+                <!-- Key benefits
                 <ul class="mt-14 space-y-3 max-w-3xl mx-auto">
                     <li class="flex gap-3">
                         <span>✅</span>
@@ -114,20 +119,20 @@ defineProps({
                         <span>✅</span>
                         <span><strong>Instant escalation</strong> → one click to accept or tweak task.</span>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </section>
 
         <!-- Service packs -->
         <section id="packs" class="py-24">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-2xl font-bold mb-8 text-center">First service packs</h2>
+                <h2 class="text-2xl font-bold mb-8 text-center">First service agents</h2>
 
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-sm border border-slate-200 dark:border-slate-700">
                         <thead class="bg-slate-100 dark:bg-slate-700/50">
                             <tr class="text-left">
-                                <th class="p-3">Pack</th>
+                                <th class="p-3">Agent</th>
                                 <th class="p-3">Problem it solves</th>
                                 <th class="p-3">Everyday use-case</th>
                                 <th class="p-3">Status</th>
@@ -164,7 +169,7 @@ defineProps({
 
                 <p class="mt-6 text-center">
                     <Link :href="route('pack-suggestion.form')" class="text-fuchsia-600 hover:underline">
-                        Suggest a pack →
+                        Suggest an agent →
                     </Link>
                 </p>
             </div>
@@ -177,20 +182,21 @@ defineProps({
 
                 <div class="grid md:grid-cols-2 gap-10 items-start">
                     <!-- Snippet -->
-                    <pre class="overflow-auto rounded-lg bg-slate-900 text-slate-100 p-4 text-sm"><code>from pydantic_ai import Agent
-from a2a_sdk import register_agent
+                    <pre class="overflow-auto rounded-lg bg-slate-900 text-slate-100 p-4 text-sm">
+                        <code>from pydantic_ai import Agent
+                            from a2a_sdk import register_agent
 
-promo = Agent(
-    model="gpt-4o",
-    system_prompt="Write a friendly promotional post about {product}."
-)
+                            promo = Agent(
+                                model="gpt-4o",
+                                system_prompt="Write a friendly promotional post about {product}."
+                            )
 
-register_agent(
-    agent=promo,
-    name="SocialPromoter",
-    version="0.1.0",
-    pricing=dict(fee_per_post=0.40)   # €0.40 per published post
-)                       </code></pre>
+                            register_agent(
+                                agent=promo,
+                                name="SocialPromoter",
+                                version="0.1.0",
+                                pricing=dict(fee_per_post=0.40)   # €0.40 per published post
+                            )                       </code></pre>
 
                     <!-- Value props + publish flow -->
                     <div>
@@ -209,9 +215,9 @@ register_agent(
                             <li>Users hire → platform charges → you get paid</li>
                         </ol>
 
-                        <a href="https://github.com/your-org/agent-boilerplate" class="mt-6 inline-block text-fuchsia-600 hover:underline">
+                        <!-- <a href="https://github.com/your-org/agent-boilerplate" class="mt-6 inline-block text-fuchsia-600 hover:underline">
                             📂 Boilerplate repo & docs →
-                        </a>
+                        </a>-->
                     </div>
                 </div>
             </div>
