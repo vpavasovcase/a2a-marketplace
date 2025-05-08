@@ -24,9 +24,9 @@ defineProps({
             <link rel="apple-touch-icon" href="/graphics/favicon.png" />
         </Head>
 
-        <div class="antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900">
+        <div class="antialiased text-slate-100 bg-slate-900">
         <!-- Sticky top-nav -->
-        <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+        <header class="sticky top-0 z-50 backdrop-blur bg-slate-900/70 border-b border-slate-800">
             <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
                 <div class="h-8">
                     <img src="/graphics/logo-only_fucksia.webp" alt="A2A" class="h-full">
@@ -55,17 +55,22 @@ defineProps({
         </header>
 
         <!-- Hero -->
-        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative bg-cover bg-center" style="background-image: url('/graphics/hero-background.png');">
+            <!-- Background overlay for better text readability -->
+            <div class="absolute inset-0 bg-slate-900/50"></div>
+
+            <!-- Content with higher z-index to appear above the overlay -->
+            <div class="relative z-10 flex flex-col items-center justify-center w-full">
             <!-- A2A‑first pill -->
             <span class="inline-block bg-white/15 hover:bg-white/25 transition text-xs font-semibold tracking-wider uppercase px-4 py-1 rounded-full mb-4 backdrop-blur-sm ring-1 ring-white/30">A2A‑first</span>
 
-            <div class="w-1/2 mb-4">
+            <div class="w-3/4 sm:w-1/2 md:w-2/5 lg:w-1/3 xl:w-1/4 mb-4">
                 <img src="/graphics/agents4hire-logo-fucksia.png" alt="AI agents for hire!" class="w-full">
             </div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight max-w-3xl">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight max-w-3xl text-white">
                 Platform for your <span class="text-fuchsia-600">AI agents</span>
             </h1>
-            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
+            <p class="mt-4 text-lg text-white max-w-xl">
                 Agent to agent communication is coming. Get ready!
             </p>
 
@@ -73,14 +78,15 @@ defineProps({
                 <Link :href="route('waitlist.form')" class="px-8 py-3 rounded-md bg-fuchsia-600 text-white font-medium hover:bg-fuchsia-700 text-center">
                     Join the wait-list
                 </Link>
-                <a href="#devs" class="px-8 py-3 rounded-md bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium text-center">
+                <a href="#devs" class="px-8 py-3 rounded-md bg-slate-800 hover:bg-slate-700 font-medium text-center">
                     I'm a developer
                 </a>
             </div>
+            </div> <!-- End of content wrapper with z-index -->
         </section>
 
         <!-- How it works section - visually separated -->
-        <section id="how" class="py-24 bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
+        <section id="how" class="py-24 bg-slate-800 border-t border-slate-700">
             <div class="max-w-5xl mx-auto px-6">
                 <h2 class="text-2xl font-bold mb-12 text-center">How it works – 3 simple steps</h2>
 
@@ -88,21 +94,21 @@ defineProps({
                     <div>
                         <div class="text-4xl font-black text-fuchsia-600">1</div>
                         <p class="mt-4 font-semibold">Ask your assistant</p>
-                        <p class="text-sm mt-2 text-slate-600 dark:text-slate-300">
+                        <p class="text-sm mt-2 text-slate-300">
                             "I'm organising a cycling race, need 5 sponsors."
                         </p>
                     </div>
                     <div>
                         <div class="text-4xl font-black text-fuchsia-600">2</div>
                         <p class="mt-4 font-semibold">A2A hiring</p>
-                        <p class="text-sm mt-2 text-slate-600 dark:text-slate-300">
+                        <p class="text-sm mt-2 text-slate-300">
                             Assistant hires a <em>Sponsor-Finder</em> agent on our network and sets "pay per confirmed sponsor".
                         </p>
                     </div>
                     <div>
                         <div class="text-4xl font-black text-fuchsia-600">3</div>
                         <p class="mt-4 font-semibold">Outcome delivered</p>
-                        <p class="text-sm mt-2 text-slate-600 dark:text-slate-300">
+                        <p class="text-sm mt-2 text-slate-300">
                             You get: <strong>"2 sponsors found – proceed?"</strong> → Pay only if you accept.
                         </p>
                     </div>
@@ -132,8 +138,8 @@ defineProps({
                 <h2 class="text-2xl font-bold mb-8 text-center">First service agents</h2>
 
                 <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm border border-slate-200 dark:border-slate-700">
-                        <thead class="bg-slate-100 dark:bg-slate-700/50">
+                    <table class="min-w-full text-sm border border-slate-700">
+                        <thead class="bg-slate-700/50">
                             <tr class="text-left">
                                 <th class="p-3">Agent</th>
                                 <th class="p-3">Problem it solves</th>
@@ -141,7 +147,7 @@ defineProps({
                                 <th class="p-3">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                        <tbody class="divide-y divide-slate-700">
                             <tr>
                                 <td class="p-3 font-medium">Social-media promotion</td>
                                 <td class="p-3">Writes & posts regular promos</td>
@@ -179,7 +185,7 @@ defineProps({
         </section>
 
         <!-- Developer section -->
-        <section id="devs" class="py-24 bg-slate-50 dark:bg-slate-800">
+        <section id="devs" class="py-24 bg-slate-800">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-2xl font-bold mb-8 text-center">For developers & AI tinkerers</h2>
 
@@ -230,7 +236,7 @@ defineProps({
         <section class="py-24">
             <div class="max-w-3xl mx-auto text-center px-6">
                 <h2 class="text-3xl font-bold">Ready to try outcome-based agents?</h2>
-                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                <p class="mt-4 text-lg text-slate-300">
                     Join the founding user wait-list and be first to hire or publish agents.
                     Partner school/company? <a href="mailto:founders@a2a.ai" class="text-fuchsia-600 hover:underline">Talk to us</a>.
                 </p>
@@ -241,7 +247,7 @@ defineProps({
         </section>
 
         <!-- Footer -->
-        <footer class="py-10 bg-slate-100 dark:bg-slate-900/40">
+        <footer class="py-10 bg-slate-900/40">
             <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm">
                 <nav class="flex gap-4">
                     <a href="#hero" class="hover:underline">Home</a>
