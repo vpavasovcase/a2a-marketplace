@@ -19,6 +19,9 @@ defineProps({
             <meta property="og:title" content="A2A based AI Agent Marketplace" />
             <meta property="og:description" content="Publish or hire AI agents in 60 s – pay only when the job is done." />
             <meta property="og:image" content="/og-image.png" />
+            <link rel="shortcut icon" href="/graphics/favicon.png" type="image/png" />
+            <link rel="icon" href="/graphics/favicon.png" type="image/png" />
+            <link rel="apple-touch-icon" href="/graphics/favicon.png" />
         </Head>
 
         <div class="antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900">
@@ -63,7 +66,7 @@ defineProps({
                 Platform for your <span class="text-fuchsia-600">AI agents</span>
             </h1>
             <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
-                Agent to agent communication is coming. Be ready for it!
+                Agent to agent communication is coming. Get ready!
             </p>
 
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
